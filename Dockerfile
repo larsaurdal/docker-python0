@@ -108,8 +108,8 @@ verbnet webtext word2vec_sample wordnet wordnet_ic words ycoe && \
 RUN apt-get update && \
     # The apt-get version of imagemagick has gone mad, and wants to remove sysvinit.
     apt-get -y build-dep imagemagick && \
-    wget http://www.imagemagick.org/download/ImageMagick-6.9.3-0.tar.gz && \
-    tar xzf ImageMagick-6.9.3-0.tar.gz && cd ImageMagick-6.9.3-0 && ./configure && \
+    wget http://www.imagemagick.org/download/ImageMagick-6.9.3-5.tar.gz && \
+    tar xzf ImageMagick-6.9.3-5.tar.gz && cd ImageMagick-6.9.3-5 && ./configure && \
     make && make install && \
     apt-get -y install libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev && \
     apt-get -y install libtbb2 libtbb-dev libjpeg-dev libtiff-dev libjasper-dev && \
