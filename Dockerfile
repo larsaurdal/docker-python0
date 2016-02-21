@@ -40,7 +40,7 @@ RUN conda install anaconda python=3.4 -y && \
     pip install python-igraph && \
     #xgboost
     cd /usr/local/src && mkdir xgboost && cd xgboost && \
-    git clone https://github.com/dmlc/xgboost.git && cd xgboost && \
+    git clone --recursive https://github.com/dmlc/xgboost.git && cd xgboost && \
     make && cd python-package && python setup.py install && \
     #lasagne
     cd /usr/local/src && mkdir Lasagne && cd Lasagne && \
