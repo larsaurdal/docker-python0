@@ -30,6 +30,7 @@ RUN conda install anaconda python=3.4 -y && \
     apt-get install -y libfreetype6-dev && \
     apt-get install -y libglib2.0-0 libxext6 libsm6 libxrender1 libfontconfig1 --fix-missing && \
     # Latest sklearn && \
+    pip install --upgrade cython && \
     cd /usr/local/src && git clone https://github.com/scikit-learn/scikit-learn.git && \
     cd scikit-learn && python setup.py build && python setup.py install && \
     # textblob
