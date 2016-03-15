@@ -103,7 +103,9 @@ verbnet webtext word2vec_sample wordnet wordnet_ic words ycoe && \
     # TPOT pipeline infrastructure
     pip install tpot && \
     # haversine
-    pip install haversine
+    pip install haversine && \
+    # toolz and cythonized version cytoolz
+    pip install toolz cytoolz
 
     # Prepare for OpenCV 3
 RUN apt-get update && \
