@@ -95,17 +95,7 @@ state_union stopwords subjectivity swadesh switchboard tagsets timit toolbox tre
 twitter_samples udhr2 udhr unicode_samples universal_tagset universal_treebanks_v20 \
 verbnet webtext word2vec_sample wordnet wordnet_ic words ycoe && \
     # Stop-words
-    pip install stop-words && \
-    # Geohash
-    pip install Geohash && \
-    # DEAP genetic algorithms framework
-    pip install deap && \
-    # TPOT pipeline infrastructure
-    pip install tpot && \
-    # haversine
-    pip install haversine && \
-    # toolz and cythonized version cytoolz
-    pip install toolz cytoolz
+    pip install stop-words
 
     # Prepare for OpenCV 3
 RUN apt-get update && \
