@@ -25,7 +25,7 @@ RUN conda install anaconda python=3.4 -y && \
     pip install --upgrade setuptools && \
     pip install --upgrade protobuf && pip install --upgrade numpy && \
     conda install statsmodels seaborn python-dateutil nltk spacy dask -y -q && \
-    pip install pytagcloud pyyaml ggplot theano joblib husl geopy ml_metrics mne pyshp gensim && \
+    pip install pytagcloud pyyaml ggplot joblib husl geopy ml_metrics mne pyshp gensim && \
     apt-get update && apt-get install -y git && apt-get install -y build-essential && \
     apt-get install -y libfreetype6-dev && \
     apt-get install -y libglib2.0-0 libxext6 libsm6 libxrender1 libfontconfig1 --fix-missing && \
@@ -60,6 +60,8 @@ RUN conda install anaconda python=3.4 -y && \
     git clone https://github.com/dnouri/nolearn.git && cd nolearn && \
     echo "x" > README.rst && echo "x" > CHANGES.rst && \
     python setup.py install && \
+    # Dev branch of Theano
+    pip install git+git://github.com/Theano/Theano.git --upgrade --no-deps && \
     # put theano compiledir inside /tmp (it needs to be in writable dir)
     printf "[global]\nbase_compiledir = /tmp/.theano\n" > /.theanorc && \
     cd /usr/local/src &&  git clone https://github.com/pybrain/pybrain && \
