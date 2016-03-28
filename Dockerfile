@@ -20,6 +20,10 @@ RUN conda install anaconda python=3.4 -y && \
     # the existing installs and then replace them with the pip-based ones, so that
     # other numpy-based packages will link correctly.
     conda remove -y numpy && conda remove -y setuptools && \
+    # Anaconda's MKL Optimizations addition currently (March 2016) causes bits of numpy to break,
+    # which spreads to parts of sklearn (see https://github.com/scikit-learn/scikit-learn/issues/5046#issuecomment-197538734).
+    # Temporarily reverting.
+    conda install nomkl && conda remove mkl mkl-service && \
     # In building numpy from source, it's hard to persuade it to use gcc, so here's a patch
     ln -s /usr/bin/gcc /usr/local/bin/cc && \
     pip install --upgrade setuptools && \
