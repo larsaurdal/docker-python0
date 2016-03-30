@@ -11,7 +11,8 @@ RUN apt-get install -y python-software-properties && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 3B4FE6ACC0B21F32 && \
     mv /var/lib/apt/lists /tmp && mkdir -p /var/lib/apt/lists/partial && \
     apt-get clean && apt-get update && apt-get install -y g++-4.8 && \
-    ln -s /usr/bin/gcc-4.8 /usr/bin/gcc
+    ln -s /usr/bin/gcc-4.8 /usr/bin/gcc && \
+    ln -s /usr/bin/g++-4.8 /usr/bin/g++
     
     # using python 3.4 instead of 3.5 because tensorflow's install breaks on 3.5
 RUN conda install anaconda python=3.4 -y && \
