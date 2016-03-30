@@ -28,7 +28,7 @@ RUN conda install anaconda python=3.4 -y && \
     # Temporarily reverting.
     conda install nomkl && conda remove mkl mkl-service && \
     pip install --upgrade protobuf && pip install --upgrade numpy && \
-    conda install statsmodels seaborn python-dateutil nltk spacy dask -y -q && \
+    pip install statsmodels seaborn python-dateutil nltk spacy dask -y -q && \
     pip install pytagcloud pyyaml ggplot joblib husl geopy ml_metrics mne pyshp gensim && \
     apt-get update && apt-get install -y git && apt-get install -y build-essential && \
     apt-get install -y libfreetype6-dev && \
