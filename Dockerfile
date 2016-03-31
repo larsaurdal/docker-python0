@@ -24,10 +24,6 @@ RUN conda install anaconda python=3.4 -y && \
     # In building numpy from source, it's hard to persuade it to use gcc, so here's a patch
     ln -s /usr/bin/gcc /usr/local/bin/cc && \
     pip install --upgrade setuptools && \
-    # Anaconda's MKL Optimizations addition currently (March 2016) causes bits of numpy to break,
-    # which spreads to parts of sklearn (see https://github.com/scikit-learn/scikit-learn/issues/5046#issuecomment-197538734).
-    # Temporarily reverting.
-    conda install nomkl && conda remove mkl mkl-service && \
     pip install --upgrade protobuf && pip install --upgrade numpy && \
     pip install statsmodels seaborn python-dateutil nltk spacy dask && \
     pip install pytagcloud pyyaml ggplot joblib husl geopy ml_metrics mne pyshp gensim && \
