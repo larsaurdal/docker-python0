@@ -28,10 +28,4 @@ RUN apt-get install -y python-software-properties && \
     cd bazel && ./compile.sh && \
     mv /usr/local/src/bazel/output/bazel /usr/local/bin && \
     cd /usr/local/src &&  git clone --recurse-submodules https://github.com/tensorflow/tensorflow &&  cd tensorflow && \
-    (echo /opt/conda/bin/python; echo N;) | ./configure && \
-    mkdir -p /usr/local/src/tfbuild && \
-    # For the *_strategy options see https://github.com/bazelbuild/bazel/issues/698#issuecomment-164041244
-    TEST_TMPDIR=/usr/local/src/tfbuild bazel build --verbose_failures --genrule_strategy=standalone --spawn_strategy=standalone -c opt //tensorflow/tools/pip_package:build_pip_package && \
-    bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg && \
-    cd /tmp/tensorflow_pkg && pip install `find . -name "*whl"`
-
+    (echo /opt/conda/bin/python; echo N;) | ./configure
