@@ -4,7 +4,7 @@ FROM continuumio/anaconda3:latest
     # channels, so we add the Ubuntu repository (which requires python-software-properties
     # so we can call `add-apt-repository`. There's also some mucking about with GPG keys
     # required.
-RUN apt-get install -y python-software-properties && \
+RUN apt-get install -y build-essential python-software-properties && \
     add-apt-repository "deb http://archive.ubuntu.com/ubuntu trusty main" && \
     apt-get install debian-archive-keyring && apt-key update && apt-get update && \
     apt-get install --force-yes -y ubuntu-keyring && \
