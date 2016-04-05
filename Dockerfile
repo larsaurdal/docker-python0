@@ -11,9 +11,11 @@ RUN apt-get install -y build-essential python-software-properties && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 3B4FE6ACC0B21F32 && \
     mv /var/lib/apt/lists /tmp && mkdir -p /var/lib/apt/lists/partial && \
     apt-get clean && apt-get update && apt-get install -y g++-4.8 gfortran-4.8 && \
-    ln -s /usr/bin/gcc-4.8 /usr/bin/gcc && \
-    ln -s /usr/bin/g++-4.8 /usr/bin/g++ && \
-    ln -s /usr/bin/gfortran-4.8 /usr/bin/gfortran &&\
+    # Make `g++` etc now default to 4.8, so that everything builds and links in beautiful synchrony
+    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 100 && \
+    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 100 && \
+    update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/cpp-4.8 100 && \
+    update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-4.8 100 && \
     # Add JDK8 to allow Bazel (required for TensorFlow)
     echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" | tee -a /etc/apt/sources.list &&     echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" | tee -a /etc/apt/sources.list &&     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886 C857C906 2B90D010 && \
     apt-get update && \
