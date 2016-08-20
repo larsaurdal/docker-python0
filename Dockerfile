@@ -8,6 +8,6 @@ RUN apt-get update && apt-get install -y build-essential && \
     pip install tensorflow-0.9.0-cp35-cp35m-linux_x86_64.whl && \
     rm tensorflow-0.9.0-cp35-cp35m-linux_x86_64.whl && \
     rm -rf /root/.cache/pip/* && \
-    apt-get autoremove && \
+    apt-get autoremove -y && \
     apt-get clean
     
