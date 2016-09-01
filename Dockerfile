@@ -7,5 +7,9 @@ RUN apt-get update && apt-get install -y build-essential && \
     wget https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0rc0-cp35-cp35m-linux_x86_64.whl && \
     pip install tensorflow-0.10.0rc0-cp35-cp35m-linux_x86_64.whl  && \
     # Vowpal Rabbit
-    apt-get install -y libboost-program-options-dev zlib1g-dev libboost-python-dev && \
-    pip install vowpalwabbit
+    apt-get install libboost-program-options-dev zlib1g-dev libboost-python-dev && \
+    pip install vowpalwabbit && \
+    rm tensorflow-0.10.0rc0-cp35-cp35m-linux_x86_64.whl && \
+    rm -rf /root/.cache/pip/* && \
+    apt-get autoremove -y && \
+    apt-get clean
