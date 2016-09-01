@@ -8,8 +8,12 @@ RUN apt-get update && apt-get install -y build-essential && \
     pip install tensorflow-0.10.0rc0-cp35-cp35m-linux_x86_64.whl  && \
     # Vowpal Rabbit
     apt-get install libboost-program-options-dev zlib1g-dev libboost-python-dev && \
+    cd /usr/lib/x86_64-linux-gnu/ && rm -f libboost_python.a && rm -f libboost_python.so && \ 
+    ln -sf libboost_python-py34.so libboost_python.so && ln -sf libboost_python-py34.a libboost_python.a && \
     pip install vowpalwabbit && \
+    # Clean up install cruft
     rm tensorflow-0.10.0rc0-cp35-cp35m-linux_x86_64.whl && \
     rm -rf /root/.cache/pip/* && \
     apt-get autoremove -y && \
     apt-get clean
+
